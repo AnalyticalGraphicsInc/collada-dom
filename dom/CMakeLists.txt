@@ -15,7 +15,7 @@ file(GLOB stderrplugin_files ${CMAKE_CURRENT_SOURCE_DIR}/src/modules/stdErrPlugi
 set(COLLADA_BASE_SOURCES ${dae_files} ${libxmlplugin_files} ${stddatabase_files} ${stderrplugin_files})
 set(COLLADA_COMPILE_FLAGS "${liburiparser_CFLAGS_OTHERS} ${libpcrecpp_CFLAGS_OTHERS} ${EXTRA_COMPILE_FLAGS} ${Boost_CFLAGS}")
 # create dynamic libraries
-set(COLLADA_COMPILE_FLAGS "${COLLADA_COMPILE_FLAGS} -DDOM_DYNAMIC -DDOM_EXPORT")
+set(COLLADA_COMPILE_FLAGS "${COLLADA_COMPILE_FLAGS} -DDOM_EXPORT")
 
 if( OPT_COLLADA15 )
   add_subdirectory(src/1.5)
@@ -28,7 +28,7 @@ if( OPT_COLLADA14 )
   install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/1.4 DESTINATION ${COLLADA_DOM_INCLUDE_INSTALL_DIR} COMPONENT ${COMPONENT_PREFIX}-dev  PATTERN ".svn" EXCLUDE PATTERN ".~" EXCLUDE)
 endif()
 
-add_library(collada-dom SHARED ${COLLADA_BASE_SOURCES})
+add_library(collada-dom STATIC ${COLLADA_BASE_SOURCES})
 target_link_libraries(collada-dom ${COLLADA_LIBS})
 set_target_properties(collada-dom PROPERTIES
   COMPILE_FLAGS "${COLLADA_COMPILE_FLAGS}"

@@ -30,7 +30,7 @@ else()
   set(COLLADA_DOM_LIBRARY_SUFFIX "${COLLADA_DOM_VERSION_MAJOR}.${COLLADA_DOM_VERSION_MINOR}-@COLLADA_PRECISION@")
 endif()
 
-set( COLLADA_DOM_CXX_FLAGS "@COLLADA_DOM_EXTERNAL_FLAGS@ -DDOM_DYNAMIC" ) # dynamically linked library
+set( COLLADA_DOM_CXX_FLAGS "@COLLADA_DOM_EXTERNAL_FLAGS@" ) # dynamically linked library
 if( WIN32 )
   # for visual studio linking, most of the time boost dlls will be used
   set( COLLADA_DOM_CXX_FLAGS "${COLLADA_DOM_CXX_FLAGS} -DBOOST_ALL_DYN_LINK -DBOOST_ALL_NO_LIB")
